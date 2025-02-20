@@ -46,7 +46,9 @@ while True:
         if not städte_mit_buchstabe:
             print("Es gibt keine Stadt mit diesem Buchstaben, deshalb kriegtst du hier nen kostenlosen Punkt ;)")
             break
-        stadt = input(f"Stadt mit {buchstabe.upper()}: ").casefold()
+        stadt = input(f"Stadt mit {buchstabe.upper()} ('-' zum Aufgeben): ").casefold()
+        if stadt == "-":
+            break
         if stadt in städte_mit_buchstabe:
             print("Richtig!")
             break
@@ -57,7 +59,9 @@ while True:
         if not länder_mit_buchstabe:
             print("Es gibt keine Länder mit diesem Buchstaben, deshalb kriegtst du hier nen kostenlosen Punkt ;)")
             break
-        land = input(f"Land mit {buchstabe.upper()}: ").casefold()
+        land = input(f"Land mit {buchstabe.upper()}  ('-' zum Aufgeben): ").casefold()
+        if land == "-":
+            break
         if land in länder_mit_buchstabe:
             print("Richtig!")
             break
@@ -68,7 +72,9 @@ while True:
         if not flüsse_mit_buchstabe:
             print("Es gibt keine Flüsse mit diesem Buchstaben, deshalb kriegtst du hier nen kostenlosen Punkt ;)")
             break
-        fluss = input(f"Fluss mit {buchstabe.upper()}: ").casefold()
+        fluss = input(f"Fluss mit {buchstabe.upper()} ('-' zum Aufgeben): ").casefold()
+        if fluss == "-":
+            break
         if fluss in flüsse_mit_buchstabe:
             print("Richtig!")
             break
