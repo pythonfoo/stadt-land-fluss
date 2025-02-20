@@ -21,19 +21,56 @@ while True:
     break
 
 print("Lade Daten...")
-städte = wikidata.get_item_names_for_category("Q1549591")  # Großstadt
+städte = [
+    s.casefold()
+    for s in wikidata.get_item_names_for_category("Q1549591")  # Großstadt
+]
 print(len(städte), "Städte.")
-länder = wikidata.get_item_names_for_category("Q6256")  # Land
+
+länder = [
+    l.casefold()
+    for l in wikidata.get_item_names_for_category("Q6256")
+]
 print(len(länder), "Länder.")
-flüsse = wikidata.get_item_names_for_category("Q573344")  # großer Fluss
+
+flüsse = [
+    f.casefold()
+    for f in wikidata.get_item_names_for_category("Q1267889")  # Waterway
+]
 print(len(flüsse), "Flüsse.")
 
 while True:
-    buchstabe = random.choice(string.ascii_uppercase)
-    stadt = input("Stadt: ")
-              
-    land = input("Land: ")
+    buchstabe = random.choice(string.ascii_lowercase)
+    städte_mit_buchstabe = [s for s in städte if s.startswith(buchstabe)]
+    while True:
+        if not städte_mit_buchstabe:
+            print("Es gibt keine Stadt mit diesem Buchstaben, deshalb kriegtst du hier nen kostenlosen Punkt ;)")
+            break
+        stadt = input(f"Stadt mit {buchstabe.upper()}: ").casefold()
+        if stadt in städte_mit_buchstabe:
+            print("Richtig!")
+            break
+        print("Falsch! Probier's nochmal!")
 
-    fluss = input("Fluss: ")
-    
+    länder_mit_buchstabe = [l for l in länder if l.startswith(buchstabe)]
+    while True:
+        if not länder_mit_buchstabe:
+            print("Es gibt keine Länder mit diesem Buchstaben, deshalb kriegtst du hier nen kostenlosen Punkt ;)")
+            break
+        land = input(f"Land mit {buchstabe.upper()}: ").casefold()
+        if land in länder_mit_buchstabe:
+            print("Richtig!")
+            break
+        print("Falsch! Probier's nochmal!")
+
+    flüsse_mit_buchstabe = [f for f in flüsse if f.startswith(buchstabe)]
+    while True:
+        if not flüsse_mit_buchstabe:
+            print("Es gibt keine Flüsse mit diesem Buchstaben, deshalb kriegtst du hier nen kostenlosen Punkt ;)")
+            break
+        fluss = input(f"Fluss mit {buchstabe.upper()}: ").casefold()
+        if fluss in flüsse_mit_buchstabe:
+            print("Richtig!")
+            break
+        print("Falsch! Probier's nochmal!")
 
